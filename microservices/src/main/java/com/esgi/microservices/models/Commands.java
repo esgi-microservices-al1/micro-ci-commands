@@ -7,8 +7,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -16,23 +14,19 @@ import java.util.Date;
 public class Commands implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public Commands(Project project) {
+        this.project = project;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long cmd_id;
+    private Long cmdid;
     @NonNull
     private String command;
     @NonNull
-    private Date created_time;
+    private Date datecreated;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @NonNull
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private User users ;
-
-    @ManyToOne
-    @JoinColumn(name = "project_id")
-    @NonNull
+    @JoinColumn(name = "project_id",nullable=false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Project project;
 }

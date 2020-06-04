@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    Optional<Project> findByType(String type);
+    Optional<Project> findByName(String type);
 }

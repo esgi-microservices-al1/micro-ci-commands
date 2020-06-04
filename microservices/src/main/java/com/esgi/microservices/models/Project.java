@@ -9,8 +9,6 @@ import java.util.Date;
 import java.util.Set;
 
 
-@NoArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -18,15 +16,18 @@ import java.util.Set;
 public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public Project() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long project_id;
+    private Long id;
     @NonNull
-    private String type;
-    @NonNull
-    private Date created_time;
+    private String name;
+    private String datecreated;
 
-    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY,orphanRemoval=true)
+    @OneToMany(fetch = FetchType.LAZY,orphanRemoval=true)
     @JsonBackReference("commands")
     private Set<Commands> commands;
+
 }

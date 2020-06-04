@@ -1,8 +1,12 @@
-package com.esgi.microservices.controllers;
+package com.esgi.microservices.controllers.front_back;
 
 import com.esgi.microservices.models.Commands;
+import com.esgi.microservices.repository.CommandRepository;
+import com.esgi.microservices.repository.ProjectRepository;
 import com.esgi.microservices.services.models.CommandService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -10,9 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/commands")
-@RequiredArgsConstructor
-public class CommadController {
-    private final CommandService commandService;
+public class CommandController {
+    private CommandService commandService;
 
     @PostMapping("/add")
     public void addCommmand(@Valid @RequestBody Commands commands){
