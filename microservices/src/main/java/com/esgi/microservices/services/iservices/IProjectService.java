@@ -9,4 +9,5 @@ public interface IProjectService {
     List<Project> addProjects(List<Project> projects);
     List<Project> getProjects();
     Optional<Project> getProjectName(String name);
+    Project getProjectId(Long id);
 }

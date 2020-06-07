@@ -11,22 +11,29 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "commands")
-public class Commands implements Serializable {
+public class Command implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public Commands(Project project) {
+    public Command() { }
+    public Command(Project project) {
         this.project = project;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
     private Long cmdid;
     @NonNull
     private String command;
+    private boolean affichable; //ex: cd ... affichable, mvn install : pas affichable
     @NonNull
-    private Date datecreated;
+    @Column(unique = true)
+    private String datecreated;
 
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id",nullable=false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Project project;
+
+
 }

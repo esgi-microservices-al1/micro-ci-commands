@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 
@@ -23,11 +23,14 @@ public class Project implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @NonNull
+    @Column(unique = true)
     private String name;
+    @Column(unique = true)
+    private String path;
     private String datecreated;
 
-    @OneToMany(fetch = FetchType.LAZY,orphanRemoval=true)
-    @JsonBackReference("commands")
-    private Set<Commands> commands;
+    @OneToMany(targetEntity = Command.class,cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JsonBackReference("commands")
+    private List<Command> commands;
 
 }

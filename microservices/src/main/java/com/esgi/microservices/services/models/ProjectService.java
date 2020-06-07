@@ -48,4 +48,11 @@ public class ProjectService implements IProjectService {
         if (project.isEmpty()) throw new RuntimeException("Type Project Not found!");
         return project;
     }
+
+    @Override
+    public Project getProjectId(Long id) {
+        Project project = projectRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Type Project Not found!"));
+        return project;
+    }
 }

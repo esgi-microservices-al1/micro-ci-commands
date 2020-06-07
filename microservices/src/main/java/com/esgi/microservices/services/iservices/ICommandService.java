@@ -1,11 +1,12 @@
 package com.esgi.microservices.services.iservices;
 
-import com.esgi.microservices.models.Commands;
+import com.esgi.microservices.models.Command;
+import com.esgi.microservices.models.Project;
 
 import java.util.List;
 
 public interface ICommandService {
-    Commands addCommands(Commands commands);
-    List<Commands> getAllCommands();
+    Command addCommands(Command command, Project project);
+    List<Command> getAllCommands();
     String DeleteCommands(Long Cmd_id);
 }

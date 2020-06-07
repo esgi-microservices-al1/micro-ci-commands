@@ -1,5 +1,7 @@
 package com.esgi.microservices;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +28,9 @@ public class MicroservicesApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200")
-                        .allowedHeaders("application/json");
+                registry.addMapping("/**").allowedOrigins("*")
+                        .allowedHeaders("application/json")
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
     }
