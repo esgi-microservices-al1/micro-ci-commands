@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -45,6 +46,17 @@ public class CommandService implements ICommandService {
          LOGGER.info("Find all commands");
         Iterable<Command> commands = commandRepository.findAll();
         return IteratorUtils.toList(commands.iterator());
+    }
+
+    @Transactional
+    @Override
+    public List<Command> getCommands(Long projectid) {
+        LOGGER.info("Find all commands");
+        Project  project = projectRepository.findById(projectid)
+                .orElseThrow(() -> new ResourceNotFoundException("commands not found with projectid " + projectid));
+        List<Command> commands = project.getCommands();
+                //(List<Command>) commandRepository.findByProjectId(projectid);
+        return commands==null? Arrays.asList():commands;
     }
 
     @Transactional

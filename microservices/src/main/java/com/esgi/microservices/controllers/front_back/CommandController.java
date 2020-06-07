@@ -44,6 +44,17 @@ public class CommandController {
         return dtos;
     }
 
+    @GetMapping("/command/{id}")
+    public ResponseEntity<List<CommandDto>> getCommandsWithId(@PathVariable(value = "id") Long id){
+        List<Command> commmands = commandService.getCommands(id);
+        List<CommandDto> dtos = new ArrayList<>();
+        for(Command c : commmands){
+            CommandMaker maker = new CommandMaker(c.getProject());
+            dtos.add(maker.convertToDto(c));
+        }
+        return ResponseEntity.ok(dtos);
+    }
+
     @DeleteMapping("/command/{id}")
     public void getCommands(@PathVariable Long id){
          commandService.DeleteCommands(id);
