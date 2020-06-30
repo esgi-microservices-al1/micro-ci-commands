@@ -26,6 +26,7 @@ public class ProjectController {
         return projectService.getProject();
     }
 
+
     @GetMapping("/project")
     public Optional<Project> findByType(@RequestParam(required = false) String type) {
         return projectService.getProjectByProjectName(type);
