@@ -1,63 +1,62 @@
 package com.esgi.microservices.services.models;
 
 import com.esgi.microservices.exception.ResourceNotFoundException;
-import com.esgi.microservices.kafka.KeySet;
-import com.esgi.microservices.mapper.JsonMapperWrapper;
 import com.esgi.microservices.models.Commands;
-import com.esgi.microservices.models.User;
+import com.esgi.microservices.models.Project;
 import com.esgi.microservices.repository.CommandRepository;
+import com.esgi.microservices.repository.ProjectRepository;
 import com.esgi.microservices.services.iservices.ICommandService;
-import com.esgi.microservices.services.kafka.KafkaProducerService;
-import org.apache.commons.collections4.IteratorUtils;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CommandService implements ICommandService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-    private final CommandRepository commandRepository;
-    private final KafkaProducerService kafkaProducerService;
-    private final JsonMapperWrapper jsonMapper;
-    private final String topic;
+    private static final Logger log = LoggerFactory.getLogger(CommandService.class);
 
-    @Autowired
-    public CommandService(CommandRepository commandRepository, KafkaProducerService kafkaProducerService, JsonMapperWrapper jsonMapper,@Value("${spring.kafka.consumer.topic.user}") String topic) {
-        this.commandRepository = commandRepository;
-        this.kafkaProducerService = kafkaProducerService;
-        this.jsonMapper = jsonMapper;
-        this.topic = topic;
-    }
+    private final CommandRepository commandRepository;
+    private final ProjectRepository projectRepository;
+
 
     @Transactional
     @Override
-    public Commands addCommands(Commands commands) {
-        LOGGER.info("Add commands: {}", commands);
-        Commands addCmd = commandRepository.save(commands);
-        kafkaProducerService.send(topic, KeySet.SAVE, jsonMapper.writeValue(addCmd));
-        return addCmd;
+    public Commands addCommands(final Commands commands) {
+        Optional<Project> search = projectRepository.findById(commands.getProject().getProject_id());
+        if (search.isPresent()) {
+            commandRepository.save(commands);
+            return commands;
+        } else {
+            throw new ResourceNotFoundException("Project introvable");
+        }
     }
 
     @Transactional
     @Override
     public List<Commands> getAllCommands() {
-         LOGGER.info("Find all commands");
-        Iterable<Commands> commands = commandRepository.findAll();
-        return IteratorUtils.toList(commands.iterator());
+        List<Commands> commands = new ArrayList<>();
+        commandRepository.findAll().forEach(commands::add);
+        return commands;
+    }
+
+    @Override
+    public Commands getById(final Long id) {
+        return commandRepository.findById(id).orElse(null);
     }
 
     @Transactional
     @Override
-    public String DeleteCommands(Long Cmd_id) {
-        return commandRepository.findById(Cmd_id)
+    public String DeleteCommands(final Long id) {
+        return commandRepository.findById(id)
                 .map(commands -> {
                     commandRepository.delete(commands);
                     return "Delete Successfully!";
-                }).orElseThrow(() -> new ResourceNotFoundException("commands not found with id " + Cmd_id));
+                }).orElseThrow(() -> new ResourceNotFoundException("command not found with id " + id));
     }
 }

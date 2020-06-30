@@ -1,11 +1,17 @@
-FROM maven:3.6.1-jdk-11-slim AS build
-RUN mkdir -p /workspace
-WORKDIR /workspace
-COPY pom.xml /workspace
-COPY src /workspace/src
-RUN mvn -f pom.xml clean package
+FROM maven:3.6.3-jdk-11
 
-FROM openjdk:11-alpine
-COPY --from=build /workspace/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+WORKDIR /usr/app/tmp
+
+COPY mvnw ./
+COPY mvnw.cmd ./
+COPY pom.xml ./
+COPY src/ ./src/
+
+RUN mvn package \
+&& cp ./target/app.jar /usr/app/
+
+WORKDIR /usr/app/
+
+#RUN rm -rf tmp
+
+ENTRYPOINT ["java","-jar","./app.jar"]

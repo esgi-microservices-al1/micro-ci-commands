@@ -5,7 +5,13 @@ import com.esgi.microservices.models.Commands;
 import java.util.List;
 
 public interface ICommandService {
-    Commands addCommands(Commands commands);
+
+    Commands addCommands(Commands command);
+
     List<Commands> getAllCommands();
-    String DeleteCommands(Long Cmd_id);
+
+    Commands getById(Long id);
+
+    String DeleteCommands(Long id);
+
 }

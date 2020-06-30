@@ -1,0 +1,61 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3'
+#Define services
+services:
+  rabbitmq:
+    container_name: micro-services-rabbitmq
+    image: rabbitmq:3-management-alpine
+    restart: always
+    volumes:
+      - rabbitmq-data-volume:/var/lib/rabbitmq
+      - rabbitmq-log-volume:/var/log/rabbitmq
+      - .docker/enabled_plugins:/etc/rabbitmq/enabled_plugins
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-user}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-user}
+    ports:
+      - ${MANAGEMENT_UI_HTTP_PORT:-8080}:15672
+      - ${AMQP091_PORT:-5672}:5672
+      - ${PROMETHEUS_PORT:-15692}:15692
+
+  #      API Back-end Spring Boot Application
+  api_commands:
+    container_name: micro-services-commands-api
+    build: ./microservices
+    env_file:
+      - .docker/api_commands.env
+    ports:
+      - '8081:8081'
+    expose:
+      - '8081'
+    links:
+      - postgres
+    environment:
+      RABBIT_HOST: rabbitmq
+    restart: always
+
+    #PostgreSQL Database for the application
+  postgres:
+    build: ./microservices/database
+    container_name: micro-services-commands-postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      #Volume mounted for database for the storage
+    volumes:
+      - ./microservices/database/volume:/var/lib/postgresql/data/
+    env_file:
+      - ./microservices/database/secrets.env
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    restart: always
+
+  #Volumes for DB datac
+volumes:
+  rabbitmq-data-volume:
+  rabbitmq-log-volume:
+  microdata:
+    driver: local

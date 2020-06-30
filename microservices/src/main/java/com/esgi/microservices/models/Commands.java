@@ -1,14 +1,18 @@
 package com.esgi.microservices.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -17,22 +21,20 @@ public class Commands implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long cmd_id;
-    @NonNull
+    @GeneratedValue(generator = "command_generator")
+    @SequenceGenerator(
+            name = "command_generator",
+            sequenceName = "command_sequence",
+            initialValue = 1000
+    )
+    private Long process_id;
     private String command;
-    @NonNull
+    private boolean stdout;
+    @CreatedDate
     private Date created_time;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    @NonNull
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private User users ;
-
-    @ManyToOne
     @JoinColumn(name = "project_id")
-    @NonNull
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Project project;
 }
