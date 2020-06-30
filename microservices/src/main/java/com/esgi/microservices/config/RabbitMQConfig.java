@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-
     @Value("${rabbitmq.exchange}")
     private String exchange;
 
@@ -36,7 +35,6 @@ public class RabbitMQConfig {
         template.setMessageConverter(messageConverter());
         return template;
     }
-
 
     @Bean
     Queue queue() {
