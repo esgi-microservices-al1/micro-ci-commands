@@ -12,7 +12,11 @@
     <artifactId>microservices</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>microservices</name>
+<<<<<<< HEAD
     <description>Project for Spring Boot: API Micro-services commands and Message Broker RabbitMQ</description>
+=======
+    <description>Project for Spring Boot: Micro-services command and Message Broker kafka</description>
+>>>>>>> 924ccad81b3818f52558a0e31fe04d06cb802129
 
     <properties>
         <java.version>11</java.version>
