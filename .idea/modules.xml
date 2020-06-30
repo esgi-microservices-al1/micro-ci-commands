@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/micro-ci-commands.iml" filepath="$PROJECT_DIR$/micro-ci-commands.iml" />
-      <module fileurl="file://$PROJECT_DIR$/microservices/microservices.iml" filepath="$PROJECT_DIR$/microservices/microservices.iml" />
     </modules>
   </component>
 </project>
