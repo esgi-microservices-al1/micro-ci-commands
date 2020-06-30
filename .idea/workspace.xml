@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="042dd3ef-ac6c-4d4c-89b6-952ac9821111" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/azure/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/azure/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,23 +47,23 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/rabbitmq" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/kafka" />
-      <recent name="$PROJECT_DIR$/microservices" />
-      <recent name="$PROJECT_DIR$/microservices/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/rabbitmq/src/main/java/com/esgi/rabbitmq/rabbitmq" />
       <recent name="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/rabbitmq" />
+      <recent name="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/kafka" />
+      <recent name="$PROJECT_DIR$/microservices" />
+      <recent name="$PROJECT_DIR$/microservices/src" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn package" />
-      <command value="mvn install" />
       <command value="mvn clean" />
+      <command value="mvn install" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -87,49 +87,23 @@
         </ENTRIES>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.esgi.microservices.MicroservicesApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="12" />
+      <option name="SHORTEN_COMMAND_LINE" value="MANIFEST" />
       <envs>
         <env name="POSTGRES_DB" value="microservices_db" />
         <env name="POSTGRES_USER" value="root" />
         <env name="POSTGRES_PASSWORD" value="root1994" />
         <env name="DATABASE_ADDRESS" value="micro-services-commands-postgres" />
+        <env name="RABBITMQ_URL" value="http://micro-ci.westus2.cloudapp.azure.com:40700" />
+        <env name="RABBITMQ_USER" value="esgi-al1" />
+        <env name="RABBITMQ_PASSWORD" value="g5Y86ck*uQ2&amp;s57" />
       </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RabbitmqApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="rabbitmqcommands" />
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        </ENTRIES>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.esgi.rabbitmq.rabbitmq.RabbitmqApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <envs>
-        <env name="POSTGRES_DB" value="microservices_db" />
-        <env name="POSTGRES_USER" value="root" />
-        <env name="POSTGRES_PASSWORD" value="root1994" />
-        <env name="RABBITMQ_HOST" value="micro-services-commands-rabbitmq" />
-        <env name="RABBITMQ_PORT" value="5672" />
-        <env name="RABBITMQ_USERNAME" value="user" />
-        <env name="RABBITMQ_PASSWORD" value="bitnami" />
-        <env name="RABBITMQ_QUEUE_NAME" value="finalTest" />
-        <env name="API_HOST" value="micro-services-commands-api" />
-        <env name="API_PORT" value="81" />
-        <env name="DATABASE_ADDRESS" value="micro-services-commands-postgres" />
-      </envs>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="microservices.microservices: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+    <configuration name="microservices.microservices: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
@@ -144,14 +118,8 @@
     </configuration>
     <list>
       <item itemvalue="Docker.microservices.microservices: Compose Deployment" />
-      <item itemvalue="Spring Boot.RabbitmqApplication" />
       <item itemvalue="Spring Boot.MicroservicesApplication" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Docker.microservices.microservices: Compose Deployment" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -181,6 +149,7 @@
       <workItem from="1592822488100" duration="8252000" />
       <workItem from="1592866793755" duration="25788000" />
       <workItem from="1593459256528" duration="29413000" />
+      <workItem from="1593525775307" duration="16553000" />
     </task>
     <servers />
   </component>
@@ -195,14 +164,18 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="747" y="423" key="#Assign_Data_Sources/0.0.1680.1050@0.0.1680.1050" timestamp="1589394065026" />
+    <state x="0" y="0" width="750" height="1050" key="#MicroservicesApplication" timestamp="1593525720108">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="0" y="0" width="750" height="1050" key="#MicroservicesApplication/0.0.1680.1050@0.0.1680.1050" timestamp="1593525720108" />
     <state x="112" y="0" width="750" height="1050" key="#RabbitmqApplication" timestamp="1592166153040">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="112" y="0" width="750" height="1050" key="#RabbitmqApplication/0.0.1680.1050@0.0.1680.1050" timestamp="1592166153040" />
-    <state x="440" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593525165946">
+    <state x="609" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593538416807">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593525165946" />
+    <state x="609" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593538416807" />
     <state x="556" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592923976310">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -211,10 +184,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="988" y="183" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1593466636096" />
-    <state x="713" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1593525163755">
+    <state x="713" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1593525718651">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="713" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593525163755" />
+    <state x="713" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593525718651" />
     <state x="569" y="276" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592145598915">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -227,70 +200,70 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="537" y="255" key="#microservices.microservices:_Compose_Deployment/0.0.1680.1050@0.0.1680.1050" timestamp="1589495874028" />
-    <state x="835" y="260" key="EnvironmentVariablesDialog" timestamp="1593487483762">
+    <state x="938" y="235" width="597" height="525" key="EnvironmentVariablesDialog" timestamp="1593538415694">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="835" y="260" key="EnvironmentVariablesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593487483762" />
-    <state width="1398" height="464" key="GridCell.Tab.0.bottom" timestamp="1593516696697">
+    <state x="938" y="235" width="597" height="525" key="EnvironmentVariablesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593538415694" />
+    <state width="1638" height="500" key="GridCell.Tab.0.bottom" timestamp="1593542769206">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696697" />
+    <state width="1638" height="500" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593542769206" />
     <state width="1638" height="500" key="GridCell.Tab.0.bottom/0.23.1680.959@0.23.1680.959" timestamp="1591026473185" />
     <state width="1398" height="464" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1593516401444" />
     <state width="1398" height="464" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1593479985213" />
     <state width="1398" height="506" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1593034773472" />
-    <state width="1398" height="464" key="GridCell.Tab.0.center" timestamp="1593516696695">
+    <state width="1638" height="500" key="GridCell.Tab.0.center" timestamp="1593542769205">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696695" />
+    <state width="1638" height="500" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593542769205" />
     <state width="1638" height="500" key="GridCell.Tab.0.center/0.23.1680.959@0.23.1680.959" timestamp="1591026473182" />
     <state width="1398" height="464" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1593516401443" />
     <state width="1398" height="464" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1593479985211" />
     <state width="1398" height="506" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1593034773464" />
-    <state width="1398" height="464" key="GridCell.Tab.0.left" timestamp="1593516696694">
+    <state width="1638" height="500" key="GridCell.Tab.0.left" timestamp="1593542769204">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696694" />
+    <state width="1638" height="500" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593542769204" />
     <state width="1638" height="500" key="GridCell.Tab.0.left/0.23.1680.959@0.23.1680.959" timestamp="1591026473181" />
     <state width="1398" height="464" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1593516401442" />
     <state width="1398" height="464" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1593479985210" />
     <state width="1398" height="506" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1593034773463" />
-    <state width="1398" height="464" key="GridCell.Tab.0.right" timestamp="1593516696696">
+    <state width="1638" height="500" key="GridCell.Tab.0.right" timestamp="1593542769206">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696696" />
+    <state width="1638" height="500" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593542769206" />
     <state width="1638" height="500" key="GridCell.Tab.0.right/0.23.1680.959@0.23.1680.959" timestamp="1591026473184" />
     <state width="1398" height="464" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1593516401443" />
     <state width="1398" height="464" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1593479985212" />
     <state width="1398" height="506" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1593034773465" />
-    <state width="1398" height="464" key="GridCell.Tab.1.bottom" timestamp="1593516696702">
+    <state width="1398" height="464" key="GridCell.Tab.1.bottom" timestamp="1593525753798">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696702" />
+    <state width="1398" height="464" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593525753798" />
     <state width="1638" height="500" key="GridCell.Tab.1.bottom/0.23.1680.959@0.23.1680.959" timestamp="1591026473189" />
     <state width="1398" height="464" key="GridCell.Tab.1.bottom/0.23.1680.960@0.23.1680.960" timestamp="1593516401446" />
     <state width="1398" height="464" key="GridCell.Tab.1.bottom/0.23.1680.961@0.23.1680.961" timestamp="1593479985217" />
     <state width="1398" height="506" key="GridCell.Tab.1.bottom/0.23.1680.963@0.23.1680.963" timestamp="1593034773481" />
-    <state width="1398" height="464" key="GridCell.Tab.1.center" timestamp="1593516696700">
+    <state width="1398" height="464" key="GridCell.Tab.1.center" timestamp="1593525753797">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696700" />
+    <state width="1398" height="464" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593525753797" />
     <state width="1638" height="500" key="GridCell.Tab.1.center/0.23.1680.959@0.23.1680.959" timestamp="1591026473187" />
     <state width="1398" height="464" key="GridCell.Tab.1.center/0.23.1680.960@0.23.1680.960" timestamp="1593516401445" />
     <state width="1398" height="464" key="GridCell.Tab.1.center/0.23.1680.961@0.23.1680.961" timestamp="1593479985215" />
     <state width="1398" height="506" key="GridCell.Tab.1.center/0.23.1680.963@0.23.1680.963" timestamp="1593034773474" />
-    <state width="1398" height="464" key="GridCell.Tab.1.left" timestamp="1593516696699">
+    <state width="1398" height="464" key="GridCell.Tab.1.left" timestamp="1593525753796">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696699" />
+    <state width="1398" height="464" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593525753796" />
     <state width="1638" height="500" key="GridCell.Tab.1.left/0.23.1680.959@0.23.1680.959" timestamp="1591026473186" />
     <state width="1398" height="464" key="GridCell.Tab.1.left/0.23.1680.960@0.23.1680.960" timestamp="1593516401444" />
     <state width="1398" height="464" key="GridCell.Tab.1.left/0.23.1680.961@0.23.1680.961" timestamp="1593479985214" />
     <state width="1398" height="506" key="GridCell.Tab.1.left/0.23.1680.963@0.23.1680.963" timestamp="1593034773473" />
-    <state width="1398" height="464" key="GridCell.Tab.1.right" timestamp="1593516696701">
+    <state width="1398" height="464" key="GridCell.Tab.1.right" timestamp="1593525753797">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1398" height="464" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593516696701" />
+    <state width="1398" height="464" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593525753797" />
     <state width="1638" height="500" key="GridCell.Tab.1.right/0.23.1680.959@0.23.1680.959" timestamp="1591026473188" />
     <state width="1398" height="464" key="GridCell.Tab.1.right/0.23.1680.960@0.23.1680.960" timestamp="1593516401445" />
     <state width="1398" height="464" key="GridCell.Tab.1.right/0.23.1680.961@0.23.1680.961" timestamp="1593479985216" />
@@ -303,10 +276,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="519" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588530657997" />
-    <state x="443" y="142" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1593485766415">
+    <state x="443" y="142" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1593546400716">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="443" y="142" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1593485766415" />
+    <state x="443" y="142" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1593546400716" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1593473618160">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -315,10 +288,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="234" y="188" width="1245" height="674" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1592167960550" />
-    <state x="629" y="123" width="670" height="809" key="run.anything.popup" timestamp="1592914135824">
+    <state x="629" y="123" width="670" height="809" key="run.anything.popup" timestamp="1593525553073">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="629" y="123" width="670" height="809" key="run.anything.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1592914135824" />
+    <state x="629" y="123" width="670" height="809" key="run.anything.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1593525553073" />
     <state x="505" y="246" width="670" height="739" key="run.anything.popup/0.23.1680.960@0.23.1680.960" timestamp="1589409349841" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1589495085970">
       <screen x="0" y="0" width="1680" height="1050" />

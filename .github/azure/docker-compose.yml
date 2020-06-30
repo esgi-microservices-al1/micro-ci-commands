@@ -1,3 +1,31 @@
 version: '3'
+services:
+  api_commands:
+    image: maven:3.6.3-jdk-11
+    container_name: micro-services-commands-api
+    working_dir: /api
+    volumes:
+      - ./microservices:/api
+    command: >
+      sh -c "mvn package &&
+             java -jar /api/target/*.jar"
+    environment:
+      - POSTGRES_DB=microservices_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    ports:
+      - 8899:8899
+    depends_on:
+      - postgres
+    restart: always
 
-# Add your networks/volumes/services for your microservice
+  postgres:
+    image: postgres:9.6-alpine
+    container_name: micro-services-commands-postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=microservices_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    ports:
+      - 5432:5432

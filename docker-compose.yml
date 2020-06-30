@@ -7,8 +7,8 @@ services:
     image: rabbitmq:3-management-alpine
     restart: always
     volumes:
-      - rabbitmq-data-volume:/var/lib/rabbitmq
-      - rabbitmq-log-volume:/var/log/rabbitmq
+#      - rabbitmq-data-volume:/var/lib/rabbitmq
+#      - rabbitmq-log-volume:/var/log/rabbitmq
       - .docker/enabled_plugins:/etc/rabbitmq/enabled_plugins
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-user}
@@ -18,44 +18,39 @@ services:
       - ${AMQP091_PORT:-5672}:5672
       - ${PROMETHEUS_PORT:-15692}:15692
 
-  #      API Back-end Spring Boot Application
+    #      API Back-end Spring Boot Application
   api_commands:
+    image: maven:3.6.3-jdk-11
     container_name: micro-services-commands-api
-    build: ./microservices
-    env_file:
-      - .docker/api_commands.env
-    ports:
-      - '8081:8081'
-    expose:
-      - '8081'
-    links:
-      - postgres
+    working_dir: /api
+    volumes:
+      - ./microservices:/api
+    command: >
+     sh -c "mvn package &&
+            java -jar /api/target/*.jar"
     environment:
-      RABBIT_HOST: rabbitmq
-    restart: always
+      - POSTGRES_DB=microservices_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    ports:
+      - '8899:8899'
+    depends_on:
+      - postgres
 
     #PostgreSQL Database for the application
   postgres:
-    build: ./microservices/database
+    image: postgres:9.6-alpine
     container_name: micro-services-commands-postgres
     environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      #Volume mounted for database for the storage
-    volumes:
-      - ./microservices/database/volume:/var/lib/postgresql/data/
-    env_file:
-      - ./microservices/database/secrets.env
+      - POSTGRES_DB=microservices_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
     ports:
       - 5432:5432
-    expose:
-      - 5432
-    restart: always
 
-  #Volumes for DB datac
-volumes:
-  rabbitmq-data-volume:
-  rabbitmq-log-volume:
-  microdata:
-    driver: local
+#    #Volumes for DB datac
+#volumes:
+#  rabbitmq-data-volume:
+#    rabbitmq-log-volume:
+#    microdata:
+#      driver: local
