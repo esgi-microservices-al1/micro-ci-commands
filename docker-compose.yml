@@ -47,10 +47,3 @@ services:
       - POSTGRES_PASSWORD=root1994
     ports:
       - 5432:5432
-
-#    #Volumes for DB datac
-#volumes:
-#  rabbitmq-data-volume:
-#    rabbitmq-log-volume:
-#    microdata:
-#      driver: local
