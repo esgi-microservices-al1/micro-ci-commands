@@ -1,5 +1,6 @@
 package com.esgi.microservices.rabbitmq;
 
+import com.esgi.microservices.models.Project;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

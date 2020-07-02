@@ -32,27 +32,31 @@ public class CommadController {
     public String addCommmand(@RequestBody Commands commands) {
         log.info("< sendRequest bodyCommands:{}", commands.getCommand());
         // create a post object'[
-        Commands savedCommands = commandService.addCommands(commands);
-        String url = "http://127.0.0.1:8081/api/v1/commands/" + commands.getProcess_id();
-        // create headers
-        HttpHeaders headers = new HttpHeaders();
-        // set `content-type` header
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        // set `accept` header
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        if (commands.getCommand().isEmpty() || commands.getCommand() == null) {
-            throw new ResourceNotFoundException("Your commands is empty");
+        if (commands.getProject().getProject_id() == null) {
+            throw new ResourceNotFoundException("Your project_Id is not correct");
         } else {
-            // build the request
-            HttpEntity<Commands> entity = new HttpEntity<>(savedCommands, headers);
-            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-            // check response status code
-            if (response.getStatusCode() == HttpStatus.OK) {
-                //send object to queue_commands
-                producer.sendMessage(response.getBody());
-                return response.getBody();
+            Commands savedCommands = commandService.addCommands(commands);
+            String url = "http://127.0.0.1:8899/api/v1/commands/" + commands.getProcess_id();
+            // create headers
+            HttpHeaders headers = new HttpHeaders();
+            // set `content-type` header
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            // set `accept` header
+            headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+            if (commands.getCommand().isEmpty() || commands.getCommand() == null) {
+                throw new ResourceNotFoundException("Your commands is empty");
             } else {
-                throw new ResourceNotFoundException("Request i'not send to client lourd!");
+                // build the request
+                HttpEntity<Commands> entity = new HttpEntity<>(savedCommands, headers);
+                ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+                // check response status code
+                if (response.getStatusCode() == HttpStatus.OK) {
+                    //send object to queue_commands
+                    producer.sendMessage(response.getBody());
+                    return response.getBody();
+                } else {
+                    throw new ResourceNotFoundException("Commands i'not send to database");
+                }
             }
         }
     }

@@ -1,7 +1,11 @@
 package com.esgi.microservices.rabbitmq;
 
+import com.esgi.microservices.models.Project;
+import com.esgi.microservices.services.models.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 
@@ -10,9 +14,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class Consumer {
 
-//    @RabbitListener(queues = "${rabbitmq.queue}")
-//    public void recievedMessage(Commands cmd) {
-//       // Commands commands =  new ObjectMapper().readValue(cmd, Commands.class);
-//        log.info("Recieved Message body commands: " + cmd.toString());
-//    }
+    private final ProjectService projectService;
+
+
+    @RabbitListener(queues = {"al1-project-queue"})
+    @RabbitHandler
+    public void recievedMessage(Project project) {
+        //project.setProject_id(project.getProject_id()+1);
+        //projectService.addProject(project);
+        log.info("Recieved Message body commands: [" + project.toString() + "] ");
+    }
 }
