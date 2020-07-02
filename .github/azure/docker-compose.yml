@@ -1,7 +1,7 @@
 version: '3'
 services:
   api_commands:
-    image: esgimicroci/al1-commands
+    image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-api
     working_dir: /api
     volumes:
@@ -20,7 +20,7 @@ services:
     restart: always
 
   postgres:
-    image: esgimicroci/al1-commands
+    image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-postgres
     restart: always
     environment:
