@@ -1,11 +1,10 @@
 package com.esgi.microservices.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +12,7 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 
 @Configuration
+@RequiredArgsConstructor
 public class RabbitMQConfig implements RabbitListenerConfigurer {
 
     @Value("${rabbitmq.exchange}")
@@ -37,6 +37,10 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
 //    public MessageConverter messageConverter() {
 //        return new Jackson2JsonMessageConverter();
 //    }
+
+    private final AmqpAdmin amqpAdmin;
+    private final AmqpTemplate amqpTemplate;
+
 
     @Bean
     public MappingJackson2MessageConverter jackson2Converter() {

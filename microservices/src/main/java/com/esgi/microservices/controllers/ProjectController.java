@@ -1,8 +1,6 @@
 package com.esgi.microservices.controllers;
 
 import com.esgi.microservices.models.Project;
-import com.esgi.microservices.rabbitmq.Consumer;
-import com.esgi.microservices.rabbitmq.Producer;
 import com.esgi.microservices.services.models.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConsulResource {
 
     @GetMapping
-    public String ResourceChecker(){
+    public String ResourceChecker() {
         return "Commands is running";
     }
 }

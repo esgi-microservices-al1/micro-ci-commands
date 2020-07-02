@@ -78,7 +78,7 @@ public class CommadController {
     }
 
     @GetMapping("/run")
-    public String CheckerCommands(){
+    public String CheckerCommands() {
         return "Commands is running";
     }
 
