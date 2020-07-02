@@ -1,7 +1,7 @@
 version: '3'
 services:
   api_commands:
-    image: esgimicroci/al1-commands:latest
+    image: esgimicroci/al1-commands:maven:3.6.3-jdk-11
     container_name: micro-services-commands-api
     working_dir: /api
     volumes:
@@ -20,7 +20,7 @@ services:
     restart: always
 
   postgres:
-    image: esgimicroci/al1-commands:latest
+    image: esgimicroci/al1-commands:postgres:9.6-alpine
     container_name: micro-services-commands-postgres
     restart: always
     environment:
