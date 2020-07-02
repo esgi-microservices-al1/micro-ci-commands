@@ -7,8 +7,8 @@ services:
     image: rabbitmq:3-management-alpine
     restart: always
     volumes:
-#      - rabbitmq-data-volume:/var/lib/rabbitmq
-#      - rabbitmq-log-volume:/var/log/rabbitmq
+      #      - rabbitmq-data-volume:/var/lib/rabbitmq
+      #      - rabbitmq-log-volume:/var/log/rabbitmq
       - .docker/enabled_plugins:/etc/rabbitmq/enabled_plugins
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-user}
@@ -26,8 +26,8 @@ services:
     volumes:
       - ./microservices:/api
     command: >
-     sh -c "mvn package &&
-            java -jar /api/target/*.jar"
+      sh -c "mvn package &&
+             java -jar /api/target/*.jar"
     environment:
       - POSTGRES_DB=microservices_db
       - POSTGRES_USER=root
