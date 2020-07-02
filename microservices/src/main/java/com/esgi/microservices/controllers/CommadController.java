@@ -76,4 +76,10 @@ public class CommadController {
     public void getCommands(@PathVariable Long id) {
         commandService.DeleteCommands(id);
     }
+
+    @GetMapping("/run")
+    public String CheckerCommands(){
+        return "Commands is running";
+    }
+
 }

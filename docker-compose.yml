@@ -1,7 +1,21 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
+
+networks:
+  consul-network:
+
 #Define services
 services:
+  consul:
+    container_name: micro-services-consul
+    image: consul
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+    ports:
+      - 8500:8500
+    networks:
+      - consul-network
+
   rabbitmq:
     container_name: micro-services-rabbitmq
     image: rabbitmq:3-management-alpine
@@ -34,6 +48,8 @@ services:
       - POSTGRES_PASSWORD=root1994
     ports:
       - '8899:8899'
+    networks:
+      - consul-network
     depends_on:
       - postgres
 
