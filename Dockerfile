@@ -8,4 +8,6 @@ COPY ./microservices .
 
 RUN mvn install && mvn package
 
-RUN java -jar ./target/*.jar
+EXPOSE 8080
+
+CMD ["java", "-jar", "./target/*.jar"]
