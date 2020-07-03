@@ -10,6 +10,8 @@ public interface ICommandService {
 
     List<Commands> getAllCommands();
 
+    List<Commands> getAllCommandsByProject_id(Long id);
+
     Commands getById(Long id);
 
     String DeleteCommands(Long id);

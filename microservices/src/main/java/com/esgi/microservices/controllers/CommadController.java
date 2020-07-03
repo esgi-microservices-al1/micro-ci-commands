@@ -51,10 +51,8 @@ public class CommadController {
                 ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
                 // check response status code
                 if (response.getStatusCode() == HttpStatus.OK) {
-                    //send object to queue_commands
-                    producer.sendMessage(response.getBody());
-                    return response.getBody();
-                } else {
+                        return response.getBody();
+                }else {
                     throw new ResourceNotFoundException("Commands i'not send to database");
                 }
             }
@@ -81,5 +79,54 @@ public class CommadController {
     public String CheckerCommands() {
         return "Commands is running";
     }
-
 }
+
+
+//
+//    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String addCommmand(@RequestBody Commands commands) {
+//        log.info("< sendRequest bodyCommands:{}", commands.getCommand());
+//        // create a post object'[
+//        if (commands.getProject().getProject_id() == null) {
+//            throw new ResourceNotFoundException("Your project_Id is not correct");
+//        } else {
+//            Commands savedCommands = commandService.addCommands(commands);
+//            String url = "http://127.0.0.1:8899/api/v1/commands/" + commands.getProcess_id();
+//            // create headers
+//            HttpHeaders headers = new HttpHeaders();
+//            // set `content-type` header
+//            headers.setContentType(MediaType.APPLICATION_JSON);
+//            // set `accept` header
+//            headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+//            if (commands.getCommand().isEmpty() || commands.getCommand() == null) {
+//                throw new ResourceNotFoundException("Your commands is empty");
+//            } else {
+//                // build the request
+//                HttpEntity<Commands> entity = new HttpEntity<>(savedCommands, headers);
+//                ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+//                // check response status code
+//                if (response.getStatusCode() == HttpStatus.OK) {
+//                    Long projectId = commands.getProject().getProject_id();
+//                    List<Commands> cmds = commandService.getAllCommandsByProject_id(commands.getProject().getProject_id());
+//
+//                    StringBuilder commandString = new StringBuilder();
+//
+//                    if ((commands.getProject().getProject_id() == cmds.lastIndexOf(projectId)) && (cmds.isEmpty())) {
+//                        for (Commands c : cmds) {
+//                            commandString.append("{\"command\":\"" + c.getCommand() + "\",\"stdout\":" + c.isStdout() + "},");
+//                        }
+//                        String msg = "{\"project_id\":$$projectId$$,\"commands\":$$comands$$}"
+//                                .replace("$$projectId$$", String.valueOf(projectId))
+//                                .replace("$$comands$$", "[" + commandString.substring(0, commandString.length() - 1) + "]");
+//                        log.info("commands:" + msg);
+//                        producer.sendMessage(msg);
+//                        return msg;
+//                    } else {
+//                        return response.getBody();
+//                    }
+//                } else {
+//                    throw new ResourceNotFoundException("Commands i'not send to database");
+//                }
+//            }
+//        }
+//    }

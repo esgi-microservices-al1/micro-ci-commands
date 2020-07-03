@@ -46,6 +46,11 @@ public class CommandService implements ICommandService {
     }
 
     @Override
+    public List<Commands> getAllCommandsByProject_id(Long id) {
+        return commandRepository.listCommandsOfProject(id);
+    }
+
+    @Override
     public Commands getById(final Long id) {
         return commandRepository.findById(id).orElse(null);
     }
