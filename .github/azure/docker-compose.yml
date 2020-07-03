@@ -3,7 +3,7 @@ services:
   postgresdb:
     image: postgres
     environment:
-      - POSTGRES_DB=microservices_db
+      - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     volumes:
@@ -18,7 +18,7 @@ services:
     volumes:
       - ./microservices:/api
     environment:
-      - POSTGRES_DB=microservices_db
+      - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     depends_on:
