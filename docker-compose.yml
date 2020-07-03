@@ -52,7 +52,7 @@ services:
     volumes:
       - ./microservices:/api
     environment:
-      - POSTGRES_HOTS=postgres
+      - POSTGRES_HOTS=jdbc:postgresql://postgresdb:5432/microservices_db
       - POSTGRES_DB=microservices_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994

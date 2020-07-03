@@ -1,8 +1,7 @@
 version: '3'
 services:
   postgresdb:
-    container_name: micro-services-postgresdb
-    image: postgres:9.6-alpine
+    image: postgres
     environment:
       - POSTGRES_DB=microservices_db
       - POSTGRES_USER=root
@@ -14,17 +13,18 @@ services:
 
   api_commands:
     image: esgimicroci/al1-commands:latest
-    container_name: micro-services-commands-api
+    ports:
+      - "8899:8899"
     volumes:
       - ./microservices:/api
     environment:
       - POSTGRES_DB=microservices_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
-    ports:
-      - 8899:8899
     depends_on:
-      - postgres
+      - postgresdb
+    links:
+      - postgresdb
     restart: always
 
 volumes:
