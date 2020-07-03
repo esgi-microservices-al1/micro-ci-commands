@@ -6,15 +6,15 @@ networks:
 
 #Define services
 services:
-  consul:
-    container_name: micro-services-consul
-    image: consul
-    environment:
-      - CONSUL_BIND_INTERFACE=eth0
-    ports:
-      - 8500:8500
-    networks:
-      - consul-network
+#  consul:
+#    container_name: micro-services-consul
+#    image: consul
+#    environment:
+#      - CONSUL_BIND_INTERFACE=eth0
+#    ports:
+#      - 8500:8500
+#    networks:
+#      - consul-network
 
   rabbitmq:
     container_name: micro-services-rabbitmq
@@ -32,34 +32,36 @@ services:
       - ${AMQP091_PORT:-5672}:5672
       - ${PROMETHEUS_PORT:-15692}:15692
 
+    #PostgreSQL Database for the application
+  postgresdb:
+    container_name: micro-services-postgresdb
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_DB=microservices_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    volumes:
+      - postgres:/data/postgres/project
+    ports:
+      - "5432:5432"
+
     #      API Back-end Spring Boot Application
   api_commands:
     build: .
-    container_name: micro-services-commands-api
-    working_dir: /api
+    container_name: micro-services-api-commands
     volumes:
       - ./microservices:/api
-#    command: >
-#      sh -c "mvn package &&
-#             java -jar /api/target/*.jar"
     environment:
+      - POSTGRES_HOTS=postgres
       - POSTGRES_DB=microservices_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     ports:
       - '8899:8899'
-    networks:
-      - consul-network
     depends_on:
-      - postgres
+      - postgresdb
+    links:
+      - postgresdb
 
-    #PostgreSQL Database for the application
+volumes:
   postgres:
-    image: postgres:9.6-alpine
-    container_name: micro-services-commands-postgres
-    environment:
-      - POSTGRES_DB=microservices_db
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root1994
-    ports:
-      - 5432:5432

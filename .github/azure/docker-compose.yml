@@ -1,14 +1,22 @@
 version: '3'
 services:
+  postgresdb:
+    container_name: micro-services-postgresdb
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_DB=microservices_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    volumes:
+      - postgres:/data/postgres/project
+    ports:
+      - "5432:5432"
+
   api_commands:
     image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-api
-    working_dir: /api
     volumes:
       - ./microservices:/api
-#    command: >
-#      sh -c "mvn package &&
-#             java -jar /api/target/*.jar"
     environment:
       - POSTGRES_DB=microservices_db
       - POSTGRES_USER=root
@@ -19,13 +27,5 @@ services:
       - postgres
     restart: always
 
+volumes:
   postgres:
-    image: postgres:9.6-alpine
-    container_name: micro-services-commands-postgres
-    restart: always
-    environment:
-      - POSTGRES_DB=microservices_db
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root1994
-    ports:
-      - 5432:5432

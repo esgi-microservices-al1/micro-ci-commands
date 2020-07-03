@@ -1,11 +1,11 @@
 FROM maven:3.6.3-jdk-11
 
-CMD mkdir /api
+RUN mkdir /api
 
 WORKDIR /api
 
-COPY ./microservices /api
+COPY ./microservices .
 
 RUN mvn install && mvn package
 
-RUN java -jar /api/target/*.jar
+RUN java -jar ./target/*.jar
