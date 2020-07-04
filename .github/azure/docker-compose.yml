@@ -12,7 +12,7 @@ services:
     ports:
       - "5432:5432"
 
-  api_commands:
+  apicommands:
     image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-api
     ports:
