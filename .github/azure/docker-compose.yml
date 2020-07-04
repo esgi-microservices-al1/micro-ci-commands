@@ -18,7 +18,6 @@ services:
     ports:
       - "8899:8899"
     volumes:
-      - ./microservices:/api
       - al1projects:/var/projects
     depends_on:
       - postgresdb
@@ -31,4 +30,4 @@ services:
 volumes:
   postgres:
   al1projects:
-      external: true
+    external: true
