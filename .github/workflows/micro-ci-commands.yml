@@ -11,16 +11,16 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v1
 
-#      - name: Build Project
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: 11
-#
-#      - name: Install dependencies
-#        run: cd ./microservices/ && mvn install && mvn -B package --file pom.xml
-#
-#      - name: Test Project
-#        run: ls ./microservices/target/
+      - name: Build Project
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Install dependencies
+        run: cd ./microservices/ && mvn install && mvn -B package --file pom.xml
+
+      - name: Test Project
+        run: ls ./microservices/target/
 
   deploy:
     name: Build/Publish Docker Images to DockerHub & Deploy to Azure VM
