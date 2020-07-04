@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgresdb:
-    image: postgres
+    image: esgimicroci/al1-commands
     environment:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
@@ -12,7 +12,7 @@ services:
       - "5432:5432"
 
   api_commands:
-    image: esgimicroci/al1-commands:latest
+    image: esgimicroci/al1-commands
     ports:
       - "8899:8899"
     volumes:
@@ -22,8 +22,6 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     depends_on:
-      - postgresdb
-    links:
       - postgresdb
     restart: always
 
