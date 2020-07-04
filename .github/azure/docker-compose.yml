@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgresdb:
-    image: esgimicroci/al1-commands
+    image: postgres
     container_name: micro-services-commands-postgres
     environment:
       - POSTGRES_DB=microservicesdb
@@ -19,6 +19,7 @@ services:
       - "8899:8899"
     volumes:
       - ./microservices:/api
+      - al1projects:/var/projects
     depends_on:
       - postgresdb
     environment:
@@ -29,3 +30,5 @@ services:
 
 volumes:
   postgres:
+  al1projects:
+      external: true
