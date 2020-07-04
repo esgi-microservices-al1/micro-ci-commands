@@ -4,7 +4,6 @@
     <list default="true" id="042dd3ef-ac6c-4d4c-89b6-952ac9821111" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.github/azure/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/azure/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +156,7 @@
       <workItem from="1593525775307" duration="39048000" />
       <workItem from="1593525775307" duration="38617000" />
       <workItem from="1593727576302" duration="12009000" />
-      <workItem from="1593784766099" duration="22762000" />
+      <workItem from="1593784766099" duration="23322000" />
     </task>
     <servers />
   </component>
