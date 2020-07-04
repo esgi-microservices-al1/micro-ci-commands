@@ -1,7 +1,8 @@
 version: '3'
 services:
   postgresdb:
-    image: postgres
+    container_name: micro-services-postgres
+    image: esgimicroci/al1-commands
     environment:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
@@ -12,6 +13,7 @@ services:
       - "5432:5432"
 
   api_commands:
+    container_name: micro-services-commands-api
     image: esgimicroci/al1-commands
     ports:
       - "8899:8899"
