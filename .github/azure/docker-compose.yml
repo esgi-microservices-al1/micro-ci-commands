@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgresdb:
-    image: postgres:9.6-alpine
+    image: esgimicroci/al1-commands:latest
     container_name: micro-services-postgres
     environment:
       - POSTGRES_DB=microservicesdb
