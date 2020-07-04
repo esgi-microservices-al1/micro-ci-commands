@@ -1,13 +1,21 @@
-FROM maven:3.6.3-jdk-11
+FROM postgres as db
 
-RUN mkdir /api
+FROM maven:3.6.3-jdk-11 as builder
+
+COPY ./microservices /api
 
 WORKDIR /api
 
-COPY ./microservices .
+RUN mvn dependency:go-offline && mvn package -Dmaven.test.skip=true
 
-RUN mvn install && mvn package
+FROM openjdk:11
 
-EXPOSE 8080
+USER root
 
-CMD ["java", "-jar", "./target/*.jar"]
+COPY --from=builder /api/target/app.jar /usr/src/app.jar
+
+RUN  chmod +x  /usr/src/app.jar
+
+EXPOSE 8899
+
+CMD ["java", "-jar", "/usr/src/app.jar"]

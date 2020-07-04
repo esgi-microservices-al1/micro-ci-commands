@@ -26,15 +26,6 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
     @Value("${rabbitmq.queue}")
     private String queueName;
 
-//    @Value("${spring.rabbitmq.host}")
-//    private String host;
-//
-//    @Value("${rabbitmq.routingKey}")
-//    private String routingkey;
-//
-//    @Value("${rabbitmq.queue}")
-//    private String queueName;
-
 //    @Bean
 //    public MessageConverter messageConverter() {
 //        return new Jackson2JsonMessageConverter();
@@ -82,14 +73,4 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
         return BindingBuilder.bind(queue).to(exchange).with(routingkey);
     }
 
-
-//    @Bean
-//    public ConnectionFactory connectionFactory() {
-//        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-//        connectionFactory.setAddresses("10.0.0.5");
-//        connectionFactory.setPort(40701);
-//        connectionFactory.setUsername("esgi-al1");
-//        connectionFactory.setPassword("g5Y86ck*uQ2&s57");
-//        return connectionFactory;
-//    }
 }

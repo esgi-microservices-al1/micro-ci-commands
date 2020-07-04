@@ -1,20 +1,15 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
 
-networks:
-  consul-network:
-
 #Define services
 services:
-#  consul:
-#    container_name: micro-services-consul
-#    image: consul
-#    environment:
-#      - CONSUL_BIND_INTERFACE=eth0
-#    ports:
-#      - 8500:8500
-#    networks:
-#      - consul-network
+  consul:
+    container_name: micro-services-consul
+    image: consul
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+    ports:
+      - 8500:8500
 
   rabbitmq:
     container_name: micro-services-rabbitmq
@@ -32,12 +27,11 @@ services:
       - ${AMQP091_PORT:-5672}:5672
       - ${PROMETHEUS_PORT:-15692}:15692
 
-    #PostgreSQL Database for the application
   postgresdb:
-    container_name: micro-services-postgresdb
-    image: postgres:9.6-alpine
+    container_name: micro-services-postgres
+    image: postgres
     environment:
-      - POSTGRES_DB=microservices_db
+      - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     volumes:
@@ -45,23 +39,18 @@ services:
     ports:
       - "5432:5432"
 
-    #      API Back-end Spring Boot Application
   api_commands:
+    container_name: micro-services-commands-api
     build: .
-    container_name: micro-services-api-commands
+    ports:
+      - "8899:8899"
     volumes:
       - ./microservices:/api
     environment:
-      - POSTGRES_HOTS=jdbc:postgresql://postgresdb:5432/microservices_db
-      - POSTGRES_DB=microservices_db
+      - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
-    ports:
-      - '8899:8899'
-    depends_on:
-      - postgresdb
-    links:
-      - postgresdb
+    restart: always
 
 volumes:
   postgres:
