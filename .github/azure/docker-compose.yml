@@ -17,7 +17,7 @@ services:
     ports:
       - "8899:8899"
     volumes:
-     - al1commands:/var/api
+     - commands-data:/var/api
     depends_on:
       - postgresdb
     environment:
@@ -28,5 +28,4 @@ services:
 
 volumes:
   postgres:
-  al1commands:
-    external: true
+  commands-data:
