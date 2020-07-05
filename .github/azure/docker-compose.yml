@@ -11,14 +11,13 @@ services:
       - postgres:/data/postgres/project
     ports:
       - "5432:5432"
-
   apicommands:
     image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-api
     ports:
       - "8899:8899"
     volumes:
-      - ./microservices:/api
+     - al1commands:/var/api
     depends_on:
       - postgresdb
     environment:
@@ -29,3 +28,5 @@ services:
 
 volumes:
   postgres:
+  al1commands:
+    external: true
