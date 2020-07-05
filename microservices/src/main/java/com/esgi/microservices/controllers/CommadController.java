@@ -51,7 +51,7 @@ public class CommadController {
                 ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
                 // check response status code
                 if (response.getStatusCode() == HttpStatus.OK) {
-                    producer.sendMessage(entity.toString());
+                    producer.sendMessage(response.getBody());
                         return response.getBody();
                 }else {
                     throw new ResourceNotFoundException("Commands i'not send to database");

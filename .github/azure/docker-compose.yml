@@ -18,7 +18,7 @@ services:
     ports:
       - "8899:8899"
     volumes:
-      - al1projects:/api
+      - ./microservices:/api
     depends_on:
       - postgresdb
     environment:
@@ -29,5 +29,3 @@ services:
 
 volumes:
   postgres:
-  al1projects:
-    external: true
