@@ -11,6 +11,6 @@ public class ConsulResource {
 
     @GetMapping
     public String ResourceChecker() {
-        return "Commands is running";
+        return "Commands api is running";
     }
 }
