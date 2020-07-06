@@ -25,6 +25,7 @@ services:
     expose:
       - 8899
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - commands-data:/api
     networks:
       - micro-commands-net
