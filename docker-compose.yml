@@ -1,14 +1,23 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
+
 #Define services
 services:
+  consul:
+    container_name: micro-services-consul
+    image: consul
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+    ports:
+      - 8500:8500
+
   rabbitmq:
     container_name: micro-services-rabbitmq
     image: rabbitmq:3-management-alpine
     restart: always
     volumes:
-      - rabbitmq-data-volume:/var/lib/rabbitmq
-      - rabbitmq-log-volume:/var/log/rabbitmq
+      #      - rabbitmq-data-volume:/var/lib/rabbitmq
+      #      - rabbitmq-log-volume:/var/log/rabbitmq
       - .docker/enabled_plugins:/etc/rabbitmq/enabled_plugins
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-user}
@@ -18,44 +27,30 @@ services:
       - ${AMQP091_PORT:-5672}:5672
       - ${PROMETHEUS_PORT:-15692}:15692
 
-  #      API Back-end Spring Boot Application
+  postgresdb:
+    container_name: micro-services-postgres
+    image: postgres
+    environment:
+      - POSTGRES_DB=microservicesdb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    volumes:
+      - postgres:/data/postgres/project
+    ports:
+      - "5432:5432"
+
   api_commands:
     container_name: micro-services-commands-api
-    build: ./microservices
-    env_file:
-      - .docker/api_commands.env
+    build: .
     ports:
-      - '8081:8081'
-    expose:
-      - '8081'
-    links:
-      - postgres
-    environment:
-      RABBIT_HOST: rabbitmq
-    restart: always
-
-    #PostgreSQL Database for the application
-  postgres:
-    build: ./microservices/database
-    container_name: micro-services-commands-postgres
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      #Volume mounted for database for the storage
+      - "8899:8899"
     volumes:
-      - ./microservices/database/volume:/var/lib/postgresql/data/
-    env_file:
-      - ./microservices/database/secrets.env
-    ports:
-      - 5432:5432
-    expose:
-      - 5432
+      - ./microservices:/api
+    environment:
+      - POSTGRES_DB=microservicesdb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
     restart: always
 
-  #Volumes for DB datac
 volumes:
-  rabbitmq-data-volume:
-  rabbitmq-log-volume:
-  microdata:
-    driver: local
+  postgres:

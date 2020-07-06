@@ -1,3 +1,38 @@
 version: '3'
 
-# Add your networks/volumes/services for your microservice
+networks:
+  micro-commands-net:
+
+services:
+  postgresdb:
+    image: postgres
+    container_name: micro-services-commands-postgres
+    environment:
+      - POSTGRES_DB=microservicesdb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    networks:
+      - micro-commands-net
+    volumes:
+      - postgres:/data/postgres/project
+    ports:
+      - "5432:5432"
+  apicommands:
+    image: esgimicroci/al1-commands
+    container_name: micro-services-commands-api
+    ports:
+      - "8899:8899"
+    volumes:
+     - commands-data:/api
+     - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - postgresdb
+    environment:
+      - POSTGRES_DB=microservicesdb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root1994
+    restart: always
+
+volumes:
+  postgres:
+  commands-data:
