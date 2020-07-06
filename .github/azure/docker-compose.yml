@@ -6,7 +6,6 @@ networks:
 services:
   postgresdb:
     image: postgres
-    container_name: micro-services-commands-postgres
     environment:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
@@ -24,8 +23,8 @@ services:
       - "8899:8899"
     volumes:
       - commands-data:/api
-    depends_on:
-      - postgresdb
+    networks:
+      - micro-commands-net
     environment:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
