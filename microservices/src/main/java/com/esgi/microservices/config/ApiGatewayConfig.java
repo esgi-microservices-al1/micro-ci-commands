@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApiGatewayConfig {
 
-//    @Bean
-//    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-//        return builder.routes()
-//                .route(r -> r.path("/api/v1/**")
-//                        .uri("lb://micro-ci-commands")
-//                        .id("micro-ci-commands")
-//                ).build();
-//    }
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(r -> r.path("/api/v1/**")
+                        .uri("lb://micro-ci-commands")
+                        .id("micro-ci-commands")
+                ).build();
+    }
 }

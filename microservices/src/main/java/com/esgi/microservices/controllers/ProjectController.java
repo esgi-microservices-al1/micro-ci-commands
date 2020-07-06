@@ -18,25 +18,15 @@ import java.util.Optional;
 @RequestMapping("/api/v1/projects")
 @RequiredArgsConstructor
 public class ProjectController {
-    private static List<Project> messages = new ArrayList<>();
     private final ProjectService projectService;
-    // STREAM de notifications
-    private ReplayProcessor<Project> notifications = ReplayProcessor.create(0, false);
-
     //private final Producer producer;
     //private final Consumer consumer;
-
-    @GetMapping(value = "/project/subscribe", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
-    public Flux<Project> notification() {
-        return Flux.from(notifications);
-    }
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Project addProject(@Valid @RequestBody Project project) {
         Project sendtoqueue = projectService.addProject(project);
         //producer.sendMessage(sendtoqueue);
         //consumer.recievedMessage(sendtoqueue);
-        notifications.onNext(sendtoqueue);
         return sendtoqueue;
     }
 
