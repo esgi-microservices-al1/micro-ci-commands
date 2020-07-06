@@ -1,0 +1,16 @@
+cloud:
+  gateway:
+    discovery:
+      locator:
+        enabled: true
+  consul:
+    discovery:
+      register: false
+    host: micro-ci.westus2.cloudapp.azure.com
+    port: 40600
+  loadbalancer:
+    ribbon:
+      enabled: false
+
+server:
+  port: 8888
