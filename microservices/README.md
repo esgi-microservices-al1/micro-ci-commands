@@ -1,4 +1,4 @@
-# Micro-services-commands : API RESTful
+# Micro-services-command : API RESTful
 
 > Application réalisée en JAVA 11 Spring Boot
 
