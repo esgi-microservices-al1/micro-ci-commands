@@ -2,6 +2,7 @@ version: '3'
 
 networks:
   micro-commands-net:
+    driver: bridge
 
 services:
   postgresdb:
@@ -12,6 +13,8 @@ services:
       - POSTGRES_PASSWORD=root1994
     networks:
       - micro-commands-net
+    depends_on:
+      - spring-cloud-gateway
     volumes:
       - postgres:/data/postgres/project
     ports:
@@ -25,11 +28,21 @@ services:
       - commands-data:/api
     networks:
       - micro-commands-net
+    depends_on:
+      - spring-cloud-gateway
     environment:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     restart: always
+
+  spring-cloud-gateway:
+    build: ./gateway-test
+    container_name: gateway-commands
+    ports:
+      - 6000:8081
+    networks:
+      - micro-commands-net
 
 volumes:
   postgres:
