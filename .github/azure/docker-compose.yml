@@ -1,4 +1,8 @@
 version: '3'
+
+networks:
+  micro-commands-net:
+
 services:
   postgresdb:
     image: postgres
@@ -7,12 +11,14 @@ services:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
+    networks:
+      - micro-commands-net
     volumes:
       - postgres:/data/postgres/project
     ports:
       - "5432:5432"
   apicommands:
-    image: esgimicroci/al1-commands:workflow
+    image: esgimicroci/al1-commands
     container_name: micro-services-commands-api
     ports:
       - "8899:8899"
