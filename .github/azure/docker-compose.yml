@@ -23,8 +23,8 @@ services:
     ports:
       - "8899:8899"
     volumes:
-     - commands-data:/api
-     - /var/run/docker.sock:/var/run/docker.sock
+      - commands-data:/api
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - postgresdb
     environment:

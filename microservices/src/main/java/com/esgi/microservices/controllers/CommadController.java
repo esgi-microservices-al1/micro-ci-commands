@@ -52,8 +52,8 @@ public class CommadController {
                 // check response status code
                 if (response.getStatusCode() == HttpStatus.OK) {
                     producer.sendMessage(response.getBody());
-                        return response.getBody();
-                }else {
+                    return response.getBody();
+                } else {
                     throw new ResourceNotFoundException("Commands i'not send to database");
                 }
             }
