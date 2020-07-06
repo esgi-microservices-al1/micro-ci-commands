@@ -25,7 +25,11 @@ jobs:
   deploy:
     name: Build/Publish Docker Images to DockerHub & Deploy to Azure VM
     runs-on: ubuntu-latest
+<<<<<<< HEAD
       if: github.ref == 'refs/heads/master'
+=======
+        if: github.ref == 'refs/heads/master'
+>>>>>>> workflow
 
     steps:
       - name: Checkout Project
