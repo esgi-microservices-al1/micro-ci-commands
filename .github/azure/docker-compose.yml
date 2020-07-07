@@ -18,7 +18,6 @@ services:
     ports:
       - "5432:5432"
     restart: always
-
   apicommands:
     image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-api
@@ -36,7 +35,6 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
     restart: always
-
 
 volumes:
   postgres:
