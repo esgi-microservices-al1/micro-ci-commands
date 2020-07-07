@@ -60,18 +60,18 @@ public class CommadController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Commands> getCommands() {
         return commandService.getAllCommands();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Commands getCommandById(@PathVariable Long id) {
         Commands getCommands = commandService.getById(id);
         return getCommands;
     }
 
-    @DeleteMapping("/commands/{id}")
+    @DeleteMapping(value = "/commands/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void getCommands(@PathVariable Long id) {
         commandService.DeleteCommands(id);
     }
