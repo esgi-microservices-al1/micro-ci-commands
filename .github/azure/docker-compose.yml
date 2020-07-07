@@ -17,6 +17,8 @@ services:
       - postgres:/data/postgres/project
     ports:
       - "5432:5432"
+    restart: always
+
   apicommands:
     image: esgimicroci/al1-commands:latest
     container_name: micro-services-commands-api

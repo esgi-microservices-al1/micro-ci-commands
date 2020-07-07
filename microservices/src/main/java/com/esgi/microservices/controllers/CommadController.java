@@ -36,7 +36,7 @@ public class CommadController {
             throw new ResourceNotFoundException("Your project_Id is not correct");
         } else {
             Commands savedCommands = commandService.addCommands(commands);
-            String url = "http://127.0.0.1:8899/api/v1/commands/" + commands.getProcess_id();
+            String url = "http://micro-ci-commands/api/v1/commands/" + commands.getProcess_id();
             // create headers
             HttpHeaders headers = new HttpHeaders();
             // set `content-type` header

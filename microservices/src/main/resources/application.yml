@@ -8,9 +8,9 @@ spring:
       discovery:
         tags: traefik.enable=true, traefik.frontend.entryPoints=http, traefik.frontend.rule=PathPrefixStrip:/api/v1/
         health-check-interval: 10s
-        health-check-url: 10.0.0.5:8899/api/v1/consul
-#        acl-token: 874cfccc-7fb4-202b-cbdf-6f4c3fd5c5e2
+        health-check-url: 10.0.0.4:8899/api/v1/consul
+        acl-token: 874cfccc-7fb4-202b-cbdf-6f4c3fd5c5e2
         service-name: micro-ci-commands
         hostname: micro-ci-al1.internal.cloudapp.net
-        ip-address: 10.0.0.5
+        ip-address: 10.0.0.4
         port: 8899
