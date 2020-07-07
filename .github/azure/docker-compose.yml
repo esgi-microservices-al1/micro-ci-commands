@@ -34,6 +34,9 @@ services:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
+      - CONSUL_HOST=micro-ci.westus2.cloudapp.azure.com
+      - CONSUL_TOKEN=874cfccc-7fb4-202b-cbdf-6f4c3fd5c5e2
+      - CONSUL_PORT=40600
     restart: always
 
 volumes:

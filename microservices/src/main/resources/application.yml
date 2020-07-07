@@ -3,8 +3,8 @@ spring:
     name: micro-ci-commands
   cloud:
     consul:
-      host: micro-ci.westus2.cloudapp.azure.com
-      port: 40600
+      host: 10.0.0.5
+      port: 40601
       discovery:
         tags: traefik.enable=true, traefik.frontend.entryPoints=http, traefik.frontend.rule=PathPrefixStrip:/api/v1/
         health-check-interval: 10s
