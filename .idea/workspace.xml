@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f96b054-5111-420a-89e6-f276083eae71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/models/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/repository/CommandsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/iservices/ICommandsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/models/CommandsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/MicroservicesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/MicroservicesApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/models/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/models/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/models/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/models/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/repository/CommandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/repository/CommandRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/repository/ProjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/iservices/ICommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/iservices/ICommandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/models/CommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/models/CommandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +164,7 @@
       <workItem from="1593727576302" duration="12009000" />
       <workItem from="1593784766099" duration="30799000" />
       <workItem from="1594346129251" duration="55000" />
-      <workItem from="1594395604857" duration="8517000" />
+      <workItem from="1594395604857" duration="8961000" />
     </task>
     <servers />
   </component>
