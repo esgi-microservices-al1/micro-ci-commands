@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f96b054-5111-420a-89e6-f276083eae71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/ConsulResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/ConsulResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +165,7 @@
       <workItem from="1593727576302" duration="12009000" />
       <workItem from="1593784766099" duration="30799000" />
       <workItem from="1594346129251" duration="55000" />
-      <workItem from="1594395604857" duration="9661000" />
+      <workItem from="1594395604857" duration="10179000" />
     </task>
     <servers />
   </component>
