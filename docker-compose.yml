@@ -1,15 +1,18 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
 
+#networks:
+#  consul-network:
+
 #Define services
 services:
-  consul:
-    container_name: micro-services-consul
-    image: consul
-    environment:
-      - CONSUL_BIND_INTERFACE=eth0
-    ports:
-      - 8500:8500
+  #  consul:
+  #    container_name: micro-services-consul
+  #    image: consul
+  #    environment:
+  #      - CONSUL_BIND_INTERFACE=eth0
+  #    ports:
+  #      - 8500:8500
 
   rabbitmq:
     container_name: micro-services-rabbitmq

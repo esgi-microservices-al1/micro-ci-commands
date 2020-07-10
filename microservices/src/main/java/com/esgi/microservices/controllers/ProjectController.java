@@ -5,11 +5,8 @@ import com.esgi.microservices.services.models.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.ReplayProcessor;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,13 +27,13 @@ public class ProjectController {
         return sendtoqueue;
     }
 
-    @GetMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/")
     public List<Project> findAll() {
         return projectService.getProject();
     }
 
 
-    @GetMapping(value = "/project", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/project")
     public Optional<Project> findByType(@RequestParam(required = false) String type) {
         return projectService.getProjectByProjectName(type);
     }
