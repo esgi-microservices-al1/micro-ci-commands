@@ -19,4 +19,3 @@ spring:
         port: 8899
         prefer-ip-address: true
         ip-address: 10.0.0.4
-

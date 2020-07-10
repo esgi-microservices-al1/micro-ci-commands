@@ -7,6 +7,7 @@ import com.esgi.microservices.services.models.CommandsService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/commands")
+@EnableDiscoveryClient
 @RequiredArgsConstructor
 public class CommadsController {
     private static final Logger log = LogManager.getLogger(CommadsController.class);
