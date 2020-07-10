@@ -1,9 +1,5 @@
 version: '3'
 
-networks:
-  micro-commands-net:
-    driver: bridge
-
 services:
   postgresdb:
     image: postgres
@@ -11,8 +7,6 @@ services:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
-    networks:
-      - micro-commands-net
     volumes:
       - postgres:/data/postgres/project
     ports:
@@ -28,8 +22,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - commands-data:/api
-    networks:
-      - micro-commands-net
     environment:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
