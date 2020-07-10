@@ -1,3 +1,5 @@
+server:
+  port:  9090
 spring:
   application:
     name: micro-ci-commands
@@ -10,7 +12,11 @@ spring:
         health-check-interval: 10s
         health-check-url: http://10.0.0.4:8899/api/v1/check
         acl-token: 874cfccc-7fb4-202b-cbdf-6f4c3fd5c5e2
+        register: true
+        instance-id:  ${spring.application.name}-01
         service-name: al1-commands
         hostname: micro-ci-al1.internal.cloudapp.net
-        ip-address: 10.0.0.4
         port: 8899
+        prefer-ip-address: true
+        ip-address: 10.0.0.4
+
