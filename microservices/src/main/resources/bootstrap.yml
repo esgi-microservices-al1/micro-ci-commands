@@ -15,7 +15,6 @@ spring:
         register: true
         instance-id:  ${spring.application.name}
         service-name: al1-commands
-        hostname: micro-ci-al1.internal.cloudapp.net
         prefer-ip-address: true
         ip-address: 10.0.0.4
         port: 8899

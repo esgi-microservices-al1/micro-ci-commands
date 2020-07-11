@@ -3,8 +3,10 @@ package com.esgi.microservices.services.models;
 import com.esgi.microservices.exception.ResourceNotFoundException;
 import com.esgi.microservices.models.Command;
 import com.esgi.microservices.models.Commands;
+import com.esgi.microservices.models.Project;
 import com.esgi.microservices.repository.CommandRepository;
 import com.esgi.microservices.repository.CommandsRepository;
+import com.esgi.microservices.repository.ProjectRepository;
 import com.esgi.microservices.services.iservices.ICommandsService;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +26,7 @@ public class CommandsService implements ICommandsService {
 
     private final CommandRepository commandRepository;
     private final CommandsRepository commandsRepository;
+    private final ProjectRepository projectRepository;
 
 
     @Transactional
@@ -58,17 +62,27 @@ public class CommandsService implements ICommandsService {
 
     @Override
     public List<Commands> getAllCommandsByProject_id(Long id) {
-        return commandsRepository.listCommandsOfProject(id);
+        Optional<Project> search = projectRepository.findById(id);
+        if (!search.isPresent()) {
+            throw new ResourceNotFoundException("Yours commands list by Project is not found");
+        } else {
+            return commandsRepository.listCommandsOfProject(id);
+        }
     }
 
     @Override
     public Commands getCommandsById(final Long id) {
-        return commandsRepository.findById(id).orElse(null);
+        Optional<Commands> search = commandsRepository.findById(id);
+        if (search.isEmpty() && !search.isPresent()) {
+            throw new ResourceNotFoundException("Your process_id for commands not found");
+        } else {
+            return commandsRepository.findById(id).orElse(null);
+        }
     }
 
     @Transactional
     @Override
-    public String DeleteCommands(final Long id) {
+    public String deleteCommands(final Long id) {
         return commandsRepository.findById(id)
                 .map(commands -> {
                     commandsRepository.delete(commands);

@@ -17,6 +17,6 @@ public interface ICommandsService {
 
     Commands getCommandsById(Long id);
 
-    String DeleteCommands(Long id);
+    String deleteCommands(Long id);
 
 }

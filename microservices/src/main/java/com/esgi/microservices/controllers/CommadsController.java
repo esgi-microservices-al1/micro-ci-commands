@@ -47,15 +47,14 @@ public class CommadsController {
         return commandService.getAllCommandsByProject_id(id);
     }
 
-    @GetMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Commands getCommandById(@PathVariable Long id) {
-        Commands getCommands = commandService.getCommandsById(id);
-        return getCommands;
+    @GetMapping(value = "/filter/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Commands getCommandsById(@PathVariable Long id) {
+        return commandService.getCommandsById(id);
     }
 
-    @DeleteMapping(value = "/commands/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void DeleteCommands(@PathVariable Long id) {
-        commandService.DeleteCommands(id);
+    @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String deleteCommands(@PathVariable Long id) {
+        return commandService.deleteCommands(id);
     }
 }
 

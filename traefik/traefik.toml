@@ -1,0 +1,18 @@
+################################################################
+# Consul Catalog configuration backend
+################################################################
+
+[entryPoints]
+
+  [entryPoints.http]
+  address = ":8001"
+
+[web]
+
+address = ":8000"
+
+[consulCatalog]
+
+endpoint = "consul:8500"
+
+exposedByDefault = false

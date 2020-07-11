@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,12 +28,17 @@ public class CommandService implements ICommandService {
 
     @Override
     public Command getCommandById(final Long id) {
-        return commandRepository.findById(id).orElse(null);
+        Optional<Command> search = commandRepository.findById(id);
+        if (search.isEmpty() && !search.isPresent()) {
+            throw new ResourceNotFoundException("Your command_id for command not found");
+        } else {
+            return commandRepository.findById(id).orElse(null);
+        }
     }
 
     @Transactional
     @Override
-    public String DeleteCommand(final Long id) {
+    public String deleteCommand(final Long id) {
         return commandRepository.findById(id)
                 .map(commands -> {
                     commandRepository.delete(commands);

@@ -15,10 +15,13 @@ import java.util.Optional;
 public class ProjectService implements IProjectService {
     private final ProjectRepository projectRepository;
 
-
     @Override
     public Project addProject(final Project project) {
-        return projectRepository.save(project);
+        if (projectRepository.existsByProjectName(project.getProjectName())) {
+            throw new ResourceNotFoundException("The project type already on the database exists");
+        } else {
+            return projectRepository.save(project);
+        }
     }
 
     @Override

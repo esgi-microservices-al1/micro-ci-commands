@@ -10,6 +10,6 @@ public interface ICommandService {
 
     Command getCommandById(Long id);
 
-    String DeleteCommand(Long id);
+    String deleteCommand(Long id);
 
 }

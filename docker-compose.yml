@@ -1,18 +1,30 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
 
-#networks:
-#  consul-network:
+networks:
+  consul-network:
 
 #Define services
 services:
-  #  consul:
-  #    container_name: micro-services-consul
-  #    image: consul
-  #    environment:
-  #      - CONSUL_BIND_INTERFACE=eth0
-  #    ports:
-  #      - 8500:8500
+  consul:
+    container_name: micro-services-consul
+    image: consul
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+    networks:
+      - consul-network
+    ports:
+      - 8500:8500
+      - 8600:8600
+
+  traefik:
+    build: ./traefik
+    image: traefik-consul:latest
+    ports:
+      - 8000:8000
+      - 8001:8001
+    networks:
+      - consul-network
 
   rabbitmq:
     container_name: micro-services-rabbitmq
@@ -25,6 +37,10 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-user}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-user}
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+    networks:
+      - consul-network
     ports:
       - ${MANAGEMENT_UI_HTTP_PORT:-8080}:15672
       - ${AMQP091_PORT:-5672}:5672
@@ -37,6 +53,10 @@ services:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+    networks:
+      - consul-network
     volumes:
       - postgres:/data/postgres/project
     ports:
@@ -53,6 +73,10 @@ services:
       - POSTGRES_DB=microservicesdb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root1994
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+    networks:
+      - consul-network
     restart: always
 
 volumes:
