@@ -7,6 +7,7 @@ import com.esgi.microservices.services.models.CommandsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -42,7 +43,6 @@ public class CommandsServiceTest {
         Command addcommand = new Command();
         addcommand.setId(1L);
         addcommand.setCommand("ls -l cc");
-        addcommand.setCreate_time(new Date());
         addcommand.setStdout(true);
 
         when(commandsService.addCommands(any())).thenReturn(addcommand.getCommand());
