@@ -2,6 +2,7 @@ package com.esgi.microservices.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,7 +26,8 @@ public class Commands implements Serializable {
     )
     private Long process_id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @Cascade({org.hibernate.annotations.CascadeType.DELETE})
     private List<Command> commands;
 
     @ManyToOne

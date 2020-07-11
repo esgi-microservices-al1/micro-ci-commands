@@ -1,15 +1,15 @@
 package com.esgi.microservices.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 
 @NoArgsConstructor
@@ -32,8 +32,7 @@ public class Project implements Serializable {
     private String projectName;
     private String projectPath;
 
-    @Column(nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @CreatedDate
-    private Date created_time;
+    private LocalDate created_time;
 }
