@@ -1,10 +1,9 @@
 package com.esgi.microservices.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,8 +33,8 @@ public class Command implements Serializable {
     private boolean stdout;
 
     @NonNull
-    @Column(nullable=false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     @CreatedDate
     private Date create_time;
 
