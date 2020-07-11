@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,5 +30,6 @@ public class Project implements Serializable {
     private Long project_id;
     private String projectName;
     private String projectPath;
+    @CreatedDate
     private Date created_time;
 }

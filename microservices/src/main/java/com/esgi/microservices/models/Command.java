@@ -1,6 +1,7 @@
 package com.esgi.microservices.models;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,7 +29,9 @@ public class Command implements Serializable {
     private String command;
     @NonNull
     private boolean stdout;
+
     @NonNull
+    @CreatedDate
     private Date create_time;
 
 }

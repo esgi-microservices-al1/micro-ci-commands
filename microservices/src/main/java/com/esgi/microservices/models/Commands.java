@@ -25,7 +25,7 @@ public class Commands implements Serializable {
     )
     private Long process_id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Command> commands;
 
     @ManyToOne
