@@ -20,7 +20,7 @@ jobs:
         run: cd ./microservices/ && mvn install && mvn -B package --file pom.xml
 
       - name: Test Project
-        run: ls ./microservices/target/
+        run: cd ./microservices/ && mvn -B compile && mvn test --file pom.xml
 
   deploy:
     name: Build/Publish Docker Images to DockerHub & Deploy to Azure VM

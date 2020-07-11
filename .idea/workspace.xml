@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f96b054-5111-420a-89e6-f276083eae71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/micro-ci-commands.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/micro-ci-commands.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/models/CommandsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/services/models/CommandsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +255,7 @@
       <workItem from="1593727576302" duration="12009000" />
       <workItem from="1593784766099" duration="30799000" />
       <workItem from="1594346129251" duration="55000" />
-      <workItem from="1594395604857" duration="27259000" />
+      <workItem from="1594395604857" duration="28060000" />
     </task>
     <servers />
   </component>
