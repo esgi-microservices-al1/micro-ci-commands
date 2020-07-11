@@ -26,11 +26,6 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
     @Value("${rabbitmq.queue}")
     private String queueName;
 
-//    @Bean
-//    public MessageConverter messageConverter() {
-//        return new Jackson2JsonMessageConverter();
-//    }
-
 
     @Bean
     public MappingJackson2MessageConverter jackson2Converter() {
@@ -49,14 +44,6 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
     public void configureRabbitListeners(RabbitListenerEndpointRegistrar registrar) {
         registrar.setMessageHandlerMethodFactory(myHandlerMethodFactory());
     }
-
-//    @Bean
-//    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-//        RabbitTemplate template = new RabbitTemplate(connectionFactory);
-//        template.setMessageConverter(messageConverter());
-//        return template;
-//    }
-
 
     @Bean
     Queue queue() {

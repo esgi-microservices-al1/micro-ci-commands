@@ -61,7 +61,7 @@ public class CommandsService implements ICommandsService {
     }
 
     @Override
-    public List<Commands> getAllCommandsByProject_id(Long id) {
+    public List<Commands> getAllCommandsByProject_id(final Long id) {
         Optional<Project> search = projectRepository.findById(id);
         if (!search.isPresent()) {
             throw new ResourceNotFoundException("Yours commands list by Project is not found");

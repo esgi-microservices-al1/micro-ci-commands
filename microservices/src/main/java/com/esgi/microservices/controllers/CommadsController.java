@@ -26,7 +26,7 @@ public class CommadsController {
     private final Producer producer;
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addCommmand(@RequestBody Commands commands) {
+    public String addCommmands(@RequestBody Commands commands) {
         log.info("< sendRequest bodyCommands:{}", commands.getCommands());
         if (commands.getProject().getProject_id() == null) {
             throw new ResourceNotFoundException("Your project_Id is not correct");
