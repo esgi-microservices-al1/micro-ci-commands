@@ -29,13 +29,13 @@ public class ProjectController {
         return sendtoqueue;
     }
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/")
     public List<Project> findAll() {
         return projectService.getProject();
     }
 
 
-    @GetMapping(value = "/project", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/project")
     public Optional<Project> findByType(@RequestParam(required = false) String type) {
         return projectService.getProjectByProjectName(type);
     }
