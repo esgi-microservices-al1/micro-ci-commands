@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IProjectService {
-    Project addProject(Project project);
+    Project addProject(final Project project);
 
     List<Project> getProject();
 
-    Optional<Project> getProjectByProjectName(String name);
+    Optional<Project> getProjectByProjectName(final String name);
 }

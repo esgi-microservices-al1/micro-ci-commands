@@ -8,8 +8,8 @@ public interface ICommandService {
 
     List<Command> getAllCommand();
 
-    Command getCommandById(Long id);
+    Command getCommandById(final Long id);
 
-    String deleteCommand(Long id);
+    String deleteCommand(final Long id);
 
 }

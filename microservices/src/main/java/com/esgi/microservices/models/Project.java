@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 
 @NoArgsConstructor
@@ -34,5 +34,5 @@ public class Project implements Serializable {
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @CreatedDate
-    private LocalDate created_time;
+    private Date created_time;
 }

@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -34,6 +34,6 @@ public class Command implements Serializable {
     @NonNull
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @CreatedDate
-    private LocalDate create_time;
+    private Date create_time;
 
 }

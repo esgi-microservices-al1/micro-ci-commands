@@ -7,16 +7,16 @@ import java.util.List;
 
 public interface ICommandsService {
 
-    String addCommands(Commands command);
+    String addCommands(final Commands command);
 
     List<Commands> getAllCommands();
 
     List<Command> getAllCommand();
 
-    List<Commands> getAllCommandsByProject_id(Long id);
+    List<Commands> getAllCommandsByProject_id(final Long id);
 
-    Commands getCommandsById(Long id);
+    Commands getCommandsById(final Long id);
 
-    String deleteCommands(Long id);
+    String deleteCommands(final Long id);
 
 }
