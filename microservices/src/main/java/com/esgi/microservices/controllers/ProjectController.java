@@ -29,7 +29,7 @@ public class ProjectController {
         return sendtoqueue;
     }
 
-    @GetMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Project> findAll() {
         return projectService.getProject();
     }
