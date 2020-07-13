@@ -4,6 +4,7 @@
     <list default="true" id="3f96b054-5111-420a-89e6-f276083eae71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/src/main/java/com/esgi/microservices/controllers/CommadsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +262,7 @@
       <workItem from="1594395604857" duration="33968000" />
       <workItem from="1594566038835" duration="850000" />
       <workItem from="1594635311218" duration="3600000" />
-      <workItem from="1594680467706" duration="153000" />
+      <workItem from="1594680467706" duration="795000" />
     </task>
     <servers />
   </component>

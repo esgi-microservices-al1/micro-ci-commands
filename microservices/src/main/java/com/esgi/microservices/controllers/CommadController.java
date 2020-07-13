@@ -28,13 +28,13 @@ public class CommadController {
     }
 
 
-    @GetMapping(value = "/filter/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/filter/{id}")
     public Command getCommandById(@PathVariable Long id) {
         Command getCommand = commandService.getCommandById(id);
         return getCommand;
     }
 
-    @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}")
     public String deleteCommand(@PathVariable Long id) {
         return commandService.deleteCommand(id);
     }
