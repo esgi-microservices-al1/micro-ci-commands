@@ -22,7 +22,7 @@ public class CommadController {
     private final CommandService commandService;
 
 
-    @GetMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public List<Command> getCommand() {
         return commandService.getAllCommand();
     }
