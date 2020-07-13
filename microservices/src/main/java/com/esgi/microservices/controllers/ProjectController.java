@@ -29,7 +29,7 @@ public class ProjectController {
         return sendtoqueue;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Project> findAll() {
         return projectService.getProject();
     }
