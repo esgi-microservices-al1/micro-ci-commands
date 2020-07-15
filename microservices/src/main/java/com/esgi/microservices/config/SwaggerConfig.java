@@ -2,12 +2,15 @@ package com.esgi.microservices.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import static springfox.documentation.builders.PathSelectors.regex;
+import java.util.Collections;
 
 @EnableSwagger2
 @Configuration
@@ -15,27 +18,24 @@ public class SwaggerConfig {
 
 
     @Bean
-    public Docket productApi() {
+    public Docket swaggerConfigApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
+                .paths(PathSelectors.any())
                 .apis(RequestHandlerSelectors.basePackage("com.esgi.microservices"))
-                .paths(regex("/api/v1.*"))
                 .build();
-//                .apiInfo(metaInfo());
     }
 
-//    private ApiInfo metaInfo() {
-//
-//        ApiInfo apiInfo = new ApiInfo(
-//                "Documentation API Microservices with Spring Boot",
-//                "Spring Boot Microservices API for micro-ci-commands",
-//                "1.0",
-//                "Terms of Service",
-//                new Contact("Admin micro-ci-commands", "", "zakaria.fahroui@gmail.com"),
-//                "Apache License Version 2.0",
-//                "https://www.apache.org/licesen.html"
-//        );
-//
-//        return apiInfo;
-//    }
+    private ApiInfo getApiInfo() {
+        return new ApiInfo(
+                "Contact Application API",
+                "Application Micro-Services with Spring Boot RESTful",
+                "V1",
+                "Free to use",
+                new Contact("micro-services-commands", "micro-ci-commands.com", "zakaria.fahraoui@gmail.com"),
+                "API License BY micro-ci-commands 1.0",
+                "https://micro-ci-commands.com/licenses",
+                Collections.emptyList()
+        );
+    }
 }

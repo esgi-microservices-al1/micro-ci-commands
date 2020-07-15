@@ -31,8 +31,8 @@ public class CommadsController {
 
     @ApiOperation(value = "Add a new list commads", tags = {"commads"})
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "commads created"),
-            @ApiResponse(code = 400, message = "Invalid input"),})
+            @ApiResponse(code = 200, message = "forma JSON de creation de commads "),
+            @ApiResponse(code = 404, message = "Invalid input"),})
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String addCommmands(@RequestBody @ApiParam("Commands to add. Cannot null or empty.") Commands commands) {
         log.info("< sendRequest bodyCommands:{}", commands.getCommands());
